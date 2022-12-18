@@ -80,8 +80,7 @@ r_{t} = r_{int, \ t} + r_{treasury, \ t} + r_{spread, \ t}
 \frac{\ln_{}{(1 + r_{1,\ N})}}{r_{1,\ N}}r_{1,\ N} = \sum_{t = 1}^{N}\frac{\ln_{}{(1 + r_{t})}}{r_{t}}r_{t}
  \qquad(5)$$</span>
 
-令$k = \frac{\ln_{}{(1 + r_{1,\ N})}}{r_{1,\ N}}$，$k_{t} = \frac{\ln_{}{(1 + r_{t})}}{r_{t}}$，则
-([Equation 5](#eq-re))
+令$k = \frac{\ln_{}{(1 + r_{1,\ N})}}{r_{1,\ N}}$，$k_{t} = \frac{\ln_{}{(1 + r_{t})}}{r_{t}}$，则([Equation 5](#eq-re))
 
 <span id="eq-proof">$$
 \begin{aligned}
@@ -101,8 +100,7 @@ r_{1,\ N}  & = \sum_{t=1}^{N}\frac{k_{t}}{k} r_{t} \\
 
 ### 基准组合的收益率分解
 
-债券投资基准组合的收益率分散，可以参照各成分债券相应的收益
-率分解方法获得。但一般来说债券指数的成分券数量较多，利差效应一般采用总收益率减去收入效应和国债效应的方法倒算得到。
+债券投资基准组合的收益率分散，可以参照各成分债券相应的收益率分解方法获得。但一般来说债券指数的成分券数量较多，利差效应一般采用总收益率减去收入效应和国债效应的方法倒算得到。
 
 ### 债券组合的绩效分析
 
@@ -142,5 +140,4 @@ $$
 
 1.  Multiperiod Arithmetic Attribution, Jose Menchero, 2004
 2.  Primer on Fixed Income Performance Attribution
-3.  Practical Portfolio Performance Measurement and Attribution, 2rd
-    Edition
+3.  Practical Portfolio Performance Measurement and Attribution, 2rd Edition
