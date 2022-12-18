@@ -1,9 +1,23 @@
 ---
-author: Yihui Xie
-date: "2017-08-06"
-title: About Hugo Ivy
+author: Joseph Li
+date: "2022-12-18"
+title: 关于
 ---
 
-This Hugo theme was ported from [Ivy](https://github.com/dmulholland/ivy), a minimalist website generator built in Python. I don't have time to document this theme. You have to read the source code to understand what it can do. All I can say for now is that I love it. It is clean, minimal, and responsive.
+这个博客是受到[谢益辉](https://yihui.org)启发而萌生，以记录个人点滴。
 
-I hope you will enjoy this theme. The source code is [on Github](https://github.com/yihui/hugo-ivy). Happy hacking!
+# 我是谁
+
+一个在上海工作的湖北黄冈人。
+
+# 工作经历
+
+- 2022.08 ~ 至今，   汇添富基金管理有限公司
+- 2015.01 ~ 2022.07， 海通证券股份有限公司 
+- 2011.07 ~ 2014.12， 普华永道管理咨询北京分公司
+
+# 教育背景
+
+- 2009.09 ~ 2011.07 中国人民大学财政金融学院，金融工程，硕士
+- 2005.09 ~ 2009.07 武汉大学经济与管理学院，金融工程，学士
+
