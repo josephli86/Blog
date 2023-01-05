@@ -1,0 +1,80 @@
+---
+author: Joseph Li
+categories:
+- Credit
+date: "2023-01-03"
+tags:
+- Credit
+- FICC
+- Default
+title: "2022年债券市场违约发行主体总数统计"
+---
+
+```{r, echo=FALSE,message=FALSE}
+
+library(tidyverse)
+library(lubridate)
+library(openxlsx)
+library(kableExtra)
+```
+
+```{r, echo=FALSE,message=FALSE}
+companies_df <- read.xlsx("C:/Users/book/SynologyDrive/Projects/default research/data/clean/首次违约主体信息.xlsx", detectDates = TRUE)
+gics <- read.xlsx("C:/Users/book/SynologyDrive/DataSource/GICS.xlsx")
+gics$sub_industry_code <- as.character(gics$sub_industry_code)
+```
+
+```{r, echo=FALSE,message=FALSE}
+# 各年份违约客数
+companies_df <- companies_df %>%
+  filter(is.na(default_flag)) %>%
+  mutate(Year = year(first_default_date),
+         industry_code = str_sub(gics_code, 1, 6)) %>%
+  left_join(gics %>% select(industry_code, industry),
+            by = "industry_code")
+
+df_distribution <- companies_df %>%
+  group_by(Year, industry_code, industry) %>%
+  summarise(N = n()) %>%
+  pivot_wider(names_from = Year, 
+              values_from = N,
+              names_prefix = "Y") %>%
+  arrange(industry_code)
+df_distribution[is.na(df_distribution)] <- 0
+
+year_count <- companies_df %>%
+  group_by(Year) %>%
+  summarise(N = n())
+year_count$Year <- as.character(year_count$Year)
+```
+
+## 2022年债券市场信用风险及违约概况
+
+2022年信用债市场笼罩在违约风险乌云之下。全年新增违约主体`r year_count[9, 2]`家，较2021上年大幅增加。
+
+自2018年以来，债券市场新增违约主体一直保持高位。过去5年年均违约主体约50家。
+
+```{r, fig.align='center',fig.cap='**图1. 历年新增违约主体**',echo=FALSE,message=FALSE}
+
+ggplot(year_count, aes(Year, N)) +
+  geom_bar(stat = 'identity', fill = "lightblue3") +
+  geom_text(aes(label = N, y = N + 3)) + 
+  theme_classic()
+```
+
+## 分行业违约统计
+
+分行业看，房地产行业是2022年债务违约的重灾区。房地产行业贡献新增违约主体49家，占据违约主体的79%。自2017年第一例违约之后，房地产行业违约主体逐年走高，到2022年达到顶峰。
+
+其他行业在2022年有零星新增违约，尚未出现行业性违约风险。
+
+```{r,echo=FALSE,message=FALSE}
+rn <- which(df_distribution$Y2022 != 0)
+
+df_distribution %>%
+  data.frame() %>%
+  arrange(industry_code) %>%
+  kbl(caption = '**表1. 历年各行业违约主体数量**') %>%
+  kable_classic_2(full_width = TRUE) %>%
+  row_spec(rn, color = "white", background = "#D7261E")
+```
